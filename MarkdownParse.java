@@ -15,7 +15,13 @@ public class MarkdownParse {
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
-
+            
+            // If any of above variables are -1, end the loop
+            if(nextOpenBracket == -1 || nextCloseBracket == -1 ||openParen == -1 ||closeParen == -1){
+                currentIndex = closeParen + 1;
+                break;
+            }
+            
             if(nextOpenBracket > 0){
                 char character = markdown.charAt(nextOpenBracket-1);
                 char imageChar = '!';
