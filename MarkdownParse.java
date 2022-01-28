@@ -21,11 +21,13 @@ public class MarkdownParse {
                 currentIndex = closeParen + 1;
                 break;
             }
-            
+
             if(nextOpenBracket > 0){
                 char character = markdown.charAt(nextOpenBracket-1);
                 char imageChar = '!';
+                // Checking for an "!" to not include Images
                 if(character != imageChar){
+                    // Checking if the closeBracket and openParent are directly next to eachother
                     if(openParen - nextCloseBracket == 1){
                         toReturn.add(markdown.substring(openParen + 1, closeParen));
                         currentIndex = closeParen + 1;
@@ -45,9 +47,7 @@ public class MarkdownParse {
                 else{
                    currentIndex = closeParen + 1; 
                 }
-            }
-
-                   
+            }         
         }
         return toReturn;
     }
