@@ -37,5 +37,12 @@ public class MarkdownParseTest {
         List<String> testList = List.of("https://something.com");
         assertEquals(MarkdownParse.getLinks(fileStr), testList);
     }
+
+    @Test
+    public void linkAfterOpenParen() throws IOException{
+        String fileStr = Files.readString(Path.of("/Users/sebastiaan/Documents/GitHub/markdown-parse/test3.md"));
+        List<String> testList = List.of("https://something.com", "https://linkAfterOpenParen.com");
+        assertEquals(MarkdownParse.getLinks(fileStr), testList);
+    }
     
 }
