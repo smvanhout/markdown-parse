@@ -29,5 +29,13 @@ public class MarkdownParseTest {
         assertEquals(MarkdownParse.getLinks(fileInfo), testList);
 
     }
+
+    // Tests file that contains an open paren and an image to make sure they're not included
+    @Test
+    public void testOpenParen() throws IOException{
+        String fileStr = Files.readString(Path.of("/Users/sebastiaan/Documents/GitHub/markdown-parse/test2.md"));
+        List<String> testList = List.of("https://something.com");
+        assertEquals(MarkdownParse.getLinks(fileStr), testList);
+    }
     
 }
