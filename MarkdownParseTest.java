@@ -15,6 +15,32 @@ Run with this command:
  */
 
 public class MarkdownParseTest {
+    
+    // WEEK 8 Lab Report Tests
+    @Test
+    public void testLab1() throws IOException{
+        String contents = Files.readString(Path.of("/Users/sebastiaan/Documents/GitHub/markdown-parse/test-lab1.md"));
+        List<String> expect = List.of("`google.com", "google.com", "ucsd.edu");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
+    
+    @Test 
+    public void testLab2() throws IOException{
+        String contents = Files.readString(Path.of("/Users/sebastiaan/Documents/GitHub/markdown-parse/test-lab2.md"));
+        List<String> expect = List.of("a.com(())", "example.com");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
+
+    @Test
+    public void testLab3() throws IOException{
+        String contents = Files.readString(Path.of("/Users/sebastiaan/Documents/GitHub/markdown-parse/test-lab3.md"));
+        List<String> expect = List.of("https://ucsd-cse15l-w22.github.io/");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
+
+
+
+
     @Test
     public void addition() {
         assertEquals(2, 1 + 1);
@@ -53,5 +79,13 @@ public class MarkdownParseTest {
         assertEquals(MarkdownParse.getLinks(fileStr), testList);
     }
     */
+    
+    @Test
+    public void vimTest() throws IOException{
+        String fileStr = Files.readString(Path.of("/Users/sebastiaan/Documents/GitHub/markdown-parse/test2.md"));
+        System.out.println("Vim Edited");
+        List<String> testList = List.of("https://something.com");
+        assertEquals(MarkdownParse.getLinks(fileStr), testList);
+    }
     
 }
